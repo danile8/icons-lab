@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,12 +21,11 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "icon")
-public class IconEntity {
+public class Icon {
 
 	@Id
 	@Column
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String imagen;
@@ -42,7 +41,7 @@ public class IconEntity {
 	private String historia;
 	
 	@ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)
-	private List<PaisEntity> paises = new ArrayList<>();
+	private List<Pais> paises = new ArrayList<>();
 	
 	
 }

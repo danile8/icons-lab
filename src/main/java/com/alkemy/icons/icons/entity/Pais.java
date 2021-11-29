@@ -13,20 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
 
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
-@Table(name = "pais")
 @Getter
 @Setter
-public class PaisEntity {
+public class Pais {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String imagen;
@@ -40,10 +39,8 @@ public class PaisEntity {
 	
 	@ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "continente_id", insertable = false, updatable = false)
-	private ContinenteEntity continente;
+	private Continente continente;
 	
-	@Column(name="continente_id", nullable = false)
-	private Long continenteId;
 	
 	@ManyToOne(
 			cascade = {
@@ -55,7 +52,7 @@ public class PaisEntity {
 			joinColumns = @JoinColumn(name = "pais_id"),
 			inverseJoinColumns = @JoinColumn(name = "icon_id")
 			)
-	private Set<IconEntity> icons = new HashSet<>();
+	private Set<Icon> icons = new HashSet<>();
 	
 	
 	
