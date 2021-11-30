@@ -12,8 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
 
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ public class Pais {
 	private Continente continente;
 	
 	
-	@ManyToOne(
+	@ManyToMany(
 			cascade = {
 					CascadeType.PERSIST,
 					CascadeType.MERGE
